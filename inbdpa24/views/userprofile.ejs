@@ -25,42 +25,70 @@
 <h2> Number of views: <%= views %> </h2>
 <p> Education: <br>
     <%for (var result in education) {%>
-        Title: <%= education[result].title %> <br> 
+        Title: <%= education[result].title %> <br>
         <% const startDate=new Date(education[result].startedAt) %>
-        Started: <%= startDate.toUTCString() %> <br> 
-        <% const endDate=new Date(education[result].endedAt) %> 
-        Ended: <%= endDate.toUTCString() %> <br> 
-        Location: <%= education[result].location %> <br> 
+        Started: <%= startDate.toUTCString() %> <br>
+        <% const endDate=new Date(education[result].endedAt) %>
+        Ended: <%= endDate.toUTCString() %> <br>
+        Location: <%= education[result].location %> <br>
         Description: <%= education[result].description %> <br>
-    <% } %> 
+    <% } %>
 </p>
+
+<% if ((role) && role!='guest' && name==username) { %>
+    Add education:
+    <form method="post" action="/editprofile/<%= name %>/editeducation">
+        <label for='newtitle'> Title: </label>
+        <input type="text" id="newtitle" name="newtitle"> <br>
+        <label for='newstart'> Started: </label>
+        <input type="date" id="newstart" name="newstart"> <br>
+        <label for='newend'> Ended: </label>
+        <input type="date" id="newend" name="newend"> <br>
+        <label for='newlocation'> Location: </label>
+        <input type="text" id="newlocation" name="newlocation"> <br>
+        <label for='newdescription'> Description: </label>
+        <input type="text" id="newdescription" name="newdescription"> <br>
+        <input type="submit" value="Update Education">
+
+    </form>
+<% } %>
+
+
+
+
+
+
+
 <p> Experience: <br>
     <%for (var result in experience) {%>
-        Title: <%= experience[result].title %> <br> 
+        Title: <%= experience[result].title %> <br>
         <% const startDate=new Date(experience[result].startedAt) %>
-        Started: <%= startDate.toUTCString() %> <br> 
-        <% const endDate=new Date(experience[result].endedAt) %> 
-        Ended: <%= endDate.toUTCString() %> <br> 
-        Location: <%= experience[result].location %> <br> 
+        Started: <%= startDate.toUTCString() %> <br>
+        <% const endDate=new Date(experience[result].endedAt) %>
+        Ended: <%= endDate.toUTCString() %> <br>
+        Location: <%= experience[result].location %> <br>
         Description: <%= experience[result].description %> <br>
-    <% } %> 
+    <% } %>
 
 </p>
+
+
+
 
 <% if ((role) && role!='guest' && name==username) { %>
     <form method="post" action="/editprofile/<%= name %>/editskills">
 <% } %>
-<p> Skills: <br> <% for (var result in skills) { %> 
+<p> Skills: <br> <% for (var result in skills) { %>
     <%= skills[result] %>
     <br>
         <% if ((role) && role!='guest' && name==username) { %>
-            <label for='skill[<%=result%>]' Edit </label> 
+            <label for='skill[<%=result%>]' Edit </label>
             <input type="text" name='skill[<%=result%>]' id='skill[<%=result%>]' value=<%= skills[result] %>>
         <% } %>
         <br>
     <% } %> </p>
     <% if ((role) && role!='guest' && name==username) { %>
-        <label for='skillnew'> Add new skill </label> 
+        <label for='skillnew'> Add new skill </label>
         <input type="text" name='skillnew' id='skillnew'>
         <input type="submit" value="Update Skills">
     </form>
@@ -70,12 +98,12 @@
 
 <p> Volunteering: <br>
     <%for (var result in volunteering) {%>
-        Title: <%= volunteering[result].title %> <br> 
+        Title: <%= volunteering[result].title %> <br>
         <% const startDate=new Date(volunteering[result].startedAt) %>
-        Started: <%= startDate.toUTCString() %> <br> 
-        <% const endDate=new Date(volunteering[result].endedAt) %> 
-        Ended: <%= endDate.toUTCString() %> <br> 
-        Location: <%= volunteering[result].location %> <br> 
+        Started: <%= startDate.toUTCString() %> <br>
+        <% const endDate=new Date(volunteering[result].endedAt) %>
+        Ended: <%= endDate.toUTCString() %> <br>
+        Location: <%= volunteering[result].location %> <br>
         Description: <%= volunteering[result].description %> <br>
     <% } %>
 
@@ -86,8 +114,8 @@
 
 <!-- If the person is logged in and viewing their own profile, we want them to be able to edit-->
 <% if ((role) && role!='guest' && name==username) { %>
-    <H2> This is you, you can edit </H2> 
+    <H2> This is you, you can edit </H2>
     <!-- INSERT FORMS TO EDIT PROFILE HERE-->
-<% } %> 
+<% } %>
 <%- include('./partials/footer') -%>
 </body>

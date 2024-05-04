@@ -128,6 +128,8 @@ router.post('/', auth, async(req, res, next) => {
 
     username=req.body.username;
     console.log(username); // test that we have the username filled out.
+    p_word=req.body.pword;
+    console.log(p_word); // test that we have the username filled out.
 
     // Check to see if username is in API
     const httpRequest = require('https');
